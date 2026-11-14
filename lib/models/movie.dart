@@ -10,7 +10,7 @@ class Movie {
   final String originalTitle;
   final String overview;
   final double popularity;
-  final String posterPath;
+  final String? posterPath;
   final DateTime releaseDate;
   final bool softcore;
   final bool video;
@@ -36,7 +36,10 @@ class Movie {
   });
 
   get fullPosterPath {
-    return 'https://image.tmdb.org/t/p/w500${posterPath}';
+    if (posterPath != null) {
+      return 'https://image.tmdb.org/t/p/w500${posterPath}';
+    }
+    return 'https://placehold.co/600x400';
   }
 
   factory Movie.fromJson(String str) => Movie.fromMap(json.decode(str));
