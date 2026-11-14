@@ -2,7 +2,7 @@ import 'models.dart';
 
 class Movie {
   final bool adult;
-  final String backdropPath;
+  final String? backdropPath;
   final List<int> genreIds;
   final int id;
   final String title;
@@ -38,6 +38,13 @@ class Movie {
   get fullPosterPath {
     if (posterPath != null) {
       return 'https://image.tmdb.org/t/p/w500${posterPath}';
+    }
+    return 'https://placehold.co/600x400';
+  }
+
+  get fullBackdropPath {
+    if (backdropPath != null) {
+      return 'https://image.tmdb.org/t/p/w500${backdropPath}';
     }
     return 'https://placehold.co/600x400';
   }
